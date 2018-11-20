@@ -59,7 +59,6 @@ while(opcao != 4):
                     proximo = False
                     break
             i = i + 1
-        pass
     else:
         if (opcao == 2):
             #Implemente aqui a lógica da melhor escolha
