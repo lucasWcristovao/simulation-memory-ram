@@ -4,6 +4,10 @@ memoria = [' '] * 100
 opcao = 0
 tamanho = 0
 letra = ''
+tamanhoburaco = 0
+possiveisLugares = [] * 0
+proximo = False
+
 for i in range(100):
     if(random.randint(0,11) >= 5):
         memoria[i] = 'x'
@@ -32,6 +36,10 @@ while(opcao != 4):
     print("4 - Sair")
     print("Escolha o algoritmo pelo numero")
     opcao = int(input())
+
+    if (opcao == 4):
+        break
+
     print("Digite o tamanho da informacao")
     tamanho = int(input())
     print("Digite a letra a ser utiliada")
@@ -40,9 +48,6 @@ while(opcao != 4):
     if(opcao == 1):
         #Implemente aqui a lógica da primeira escolha
         i=0
-        tamanhoburaco=0
-        possiveisLugares = [] * 0
-        proximo = False
         while(i<100):
             if memoria[i] == ' ':
                 tamanhoburaco = tamanhoburaco + 1;
@@ -61,8 +66,23 @@ while(opcao != 4):
             i = i + 1
     else:
         if (opcao == 2):
-            #Implemente aqui a lógica da melhor escolha
-            pass
+            i = 0
+            while (i < 100):
+                if memoria[i] == ' ':
+                    tamanhoburaco = tamanhoburaco + 1;
+                    possiveisLugares.append(i)
+                    if tamanhoburaco == tamanho and  memoria[i + 1] == 'x':
+                        if len(possiveisLugares) > 0:
+                            for i in range(len(possiveisLugares)):
+                                memoria[possiveisLugares[i]] = letra
+                            proximo = True
+                else:
+                    tamanhoburaco = 0
+                    possiveisLugares = [] * 0
+                    if proximo:
+                        proximo = False
+                        break
+                i = i + 1
         else:
             if(opcao == 3):
                 #Implemente aqui a lógica da pior escolha
