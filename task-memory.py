@@ -4,7 +4,9 @@ memoria = [' '] * 100
 opcao = 0
 tamanho = 0
 letra = ''
-tamanhoburaco = 0
+tamanhoBuraco = 0
+tamanhoBuracoAntigo = 0
+lugares = [] * 0
 possiveisLugares = [] * 0
 proximo = False
 
@@ -36,7 +38,6 @@ while(opcao != 4):
     print("4 - Sair")
     print("Escolha o algoritmo pelo numero")
     opcao = int(input())
-
     if (opcao == 4):
         break
 
@@ -50,15 +51,15 @@ while(opcao != 4):
         i=0
         while(i<100):
             if memoria[i] == ' ':
-                tamanhoburaco = tamanhoburaco + 1;
+                tamanhoBuraco = tamanhoBuraco + 1;
                 possiveisLugares.append(i)
-                if tamanhoburaco == tamanho:
+                if tamanhoBuraco == tamanho:
                     if len(possiveisLugares) > 0:
-                        for i in range(len(possiveisLugares)):
-                            memoria[possiveisLugares[i]] = letra
+                        for j in range(len(possiveisLugares)):
+                            memoria[possiveisLugares[j]] = letra
                         proximo = True
             else:
-                tamanhoburaco = 0
+                tamanhoBuraco = 0
                 possiveisLugares = [] * 0
                 if proximo:
                     proximo = False
@@ -69,15 +70,15 @@ while(opcao != 4):
             i = 0
             while (i < 100):
                 if memoria[i] == ' ':
-                    tamanhoburaco = tamanhoburaco + 1;
+                    tamanhoBuraco = tamanhoBuraco + 1;
                     possiveisLugares.append(i)
-                    if tamanhoburaco == tamanho and  memoria[i + 1] == 'x':
+                    if tamanhoBuraco == tamanho and  memoria[i + 1] != ' ':
                         if len(possiveisLugares) > 0:
-                            for i in range(len(possiveisLugares)):
-                                memoria[possiveisLugares[i]] = letra
+                            for j in range(len(possiveisLugares)):
+                                memoria[possiveisLugares[j]] = letra
                             proximo = True
                 else:
-                    tamanhoburaco = 0
+                    tamanhoBuraco = 0
                     possiveisLugares = [] * 0
                     if proximo:
                         proximo = False
@@ -86,7 +87,30 @@ while(opcao != 4):
         else:
             if(opcao == 3):
                 #Implemente aqui a lógica da pior escolha
-                pass
+                i = 0
+                while (i < 100):
+                    if memoria[i] == ' ':
+                        tamanhoBuraco = tamanhoBuraco + 1;
+                        possiveisLugares.append(i)
+                        if tamanhoBuraco >= tamanho:
+                            if tamanhoBuracoAntigo == 0:
+                                tamanhoBuracoAntigo = len(possiveisLugares)
+                            else:
+                                if tamanhoBuracoAntigo < len(possiveisLugares):
+                                    tamanhoBuracoAntigo = len(possiveisLugares)
+                                    lugares = possiveisLugares
+                    else:
+                        tamanhoBuraco = 0
+                        possiveisLugares = [] * 0
+                    i = i + 1
+                
+                if len(lugares) != 0:
+                    for i in range(tamanho):
+                        memoria[lugares[i]] = letra
+                
+                tamanhoBuracoAntigo = 0
+                lugares = [] * 0
+
     # Aqui você deve imprimir todo o conteúdo da variável memória
     for i in range(0, 20):
         print(memoria[i], end="|")
