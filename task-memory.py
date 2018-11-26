@@ -24,10 +24,14 @@ def mostrarMemoria():
         print(memoria[i], end="|")
     print()
 
-# Função que realiza todo raciocínio para a alocação da memória conforme a opção desejada
-def inserirLocacao(opcao):
+# Função que realiza todo raciocínio para a alocação da memória conforme os argumentos passados
+def inserirLocacao(arg_memoria, arg_opcao, arg_tamanho, arg_letra):
 
     # Variáveis da função
+    memoria = arg_memoria
+    opcao = arg_opcao
+    tamanho = arg_tamanho
+    letra = arg_letra
     qtndEspacoVazio = 0
     qtndEspacoVazioAntigo = 0
     lugaresVazios = [] * 0
@@ -121,19 +125,21 @@ while(opcao != 4):
     letra = input()
 
     if(opcao == 1):
-        # Chama a função inserirLocacao, passado o valor da variável opcao como parametro para função
-        resultado = inserirLocacao(opcao)
+        # Chama a função inserirLocacao, passado o valor da variável de memoria, opcao, tamanho, letra como parametro para função
+        resultado = inserirLocacao(memoria, opcao, tamanho, letra)
 
     if (opcao == 2):
-        # Chama a função inserirLocacao, passado o valor da variável opcao como parametro para função
-        resultado = inserirLocacao(opcao)
+        # Chama a função inserirLocacao, passado o valor da variável de memoria, opcao, tamanho, letra como parametro para função
+        resultado = inserirLocacao(memoria, opcao, tamanho, letra)
 
     if(opcao == 3):
-        # Chama a função inserirLocacao, passado o valor da variável opcao como parametro para função
-        resultado = inserirLocacao(opcao)
+        # Chama a função inserirLocacao, passado o valor da variável de memoria, opcao, tamanho, letra como parametro para função
+        resultado = inserirLocacao(memoria, opcao, tamanho, letra)
 
     # Informa ser foi ou não alocado na memória
     print(resultado)
+    input("Press ENTER to continue...")
+    print('\n')
 
     # Chama a função mostrarMemoria
     mostrarMemoria()
