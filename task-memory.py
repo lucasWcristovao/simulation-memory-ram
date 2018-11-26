@@ -7,7 +7,10 @@ letra = ""
 resultado = bool
 
 # Função que imprimi o estado atual da memória
-def mostrarMemoria():
+def mostrarMemoria(arg_memoria):
+    # Variáveis da função
+    memoria = arg_memoria
+    
     for i in range(0,20):
         print(memoria[i], end="|")
     print()
@@ -103,7 +106,7 @@ for i in range(100):
         memoria[i] = " "
 
 # Chama a função mostrarMemoria
-mostrarMemoria()
+mostrarMemoria(memoria)
 
 while(opcao != 4):
     #Menu do programa
@@ -142,4 +145,4 @@ while(opcao != 4):
     print('\n')
 
     # Chama a função mostrarMemoria
-    mostrarMemoria()
+    mostrarMemoria(memoria)
