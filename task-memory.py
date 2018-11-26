@@ -28,11 +28,11 @@ def mostrarMemoria():
 def inserirLocacao(opcao):
 
     # Variáveis da função
-    tamanhoBuraco = 0
-    tamanhoBuracoAntigo = 0
-    lugares = [] * 0
-    possiveisLugares = [] * 0
-    memoriaAntiga = memoria[:]
+    qtndEspacoVazio = 0
+    qtndEspacoVazioAntigo = 0
+    lugaresVazios = [] * 0
+    possiveisLugaresVazios = [] * 0
+    cloneMemoria = memoria[:] # Clonando o array memoria
     proximo = False
     mensagem = ""
 
@@ -40,31 +40,31 @@ def inserirLocacao(opcao):
     while(i<100):
         if memoria[i] == " ":
             # Armazena a quantidade de lugares vazios
-            tamanhoBuraco = tamanhoBuraco + 1
+            qtndEspacoVazio = qtndEspacoVazio + 1
             # Armazena no final da lista o local do lugar vazio
-            possiveisLugares.append(i)
+            possiveisLugaresVazios.append(i)
             # Se a opcao for igual a 1 ou a 2 e seguir as expressões lógicas fazer esse bloco de código
-            if (tamanhoBuraco == tamanho and opcao == 1) or (tamanhoBuraco == tamanho and  memoria[i + 1] != " " and opcao == 2):
-                if len(possiveisLugares) > 0:
+            if (qtndEspacoVazio == tamanho and opcao == 1) or (qtndEspacoVazio == tamanho and  memoria[i + 1] != " " and opcao == 2):
+                if len(possiveisLugaresVazios) > 0:
                     # Repete a estrutura conforme a quantidade de lugares
-                    for j in range(len(possiveisLugares)):
+                    for j in range(len(possiveisLugaresVazios)):
                         # Atribui a letra nos endereços vazios
-                        memoria[possiveisLugares[j]] = letra
+                        memoria[possiveisLugaresVazios[j]] = letra
                     proximo = True
             # Se a opcao for igual a 3 e seguir a expressão lógica fazer esse bloco de código
-            if tamanhoBuraco >= tamanho and opcao == 3:
+            if qtndEspacoVazio >= tamanho and opcao == 3:
                 # Pegar o primeiro lugar possíveis 
-                if tamanhoBuracoAntigo == 0:
-                    tamanhoBuracoAntigo = len(possiveisLugares)
+                if qtndEspacoVazioAntigo == 0:
+                    qtndEspacoVazioAntigo = len(possiveisLugaresVazios)
                 else:
                     # Pegar o maior lugar possível
-                    if tamanhoBuracoAntigo < len(possiveisLugares):
-                        tamanhoBuracoAntigo = len(possiveisLugares)
-                        lugares = possiveisLugares
+                    if qtndEspacoVazioAntigo < len(possiveisLugaresVazios):
+                        qtndEspacoVazioAntigo = len(possiveisLugaresVazios)
+                        lugaresVazios = possiveisLugaresVazios
         else:
             # Limpando dados das variavéis
-            tamanhoBuraco = 0
-            possiveisLugares = [] * 0
+            qtndEspacoVazio = 0
+            possiveisLugaresVazios = [] * 0
             # Se a variável for verdadeira para a estrura de retição WHILE
             if proximo:
                 proximo = False
@@ -73,17 +73,17 @@ def inserirLocacao(opcao):
 
     # Se a opcao for igual a 3
     if opcao == 3:
-        # Conferindo se existe lugares para se alocar
-        if len(lugares) != 0:
+        # Conferindo se existe lugaresVazios para se alocar
+        if len(lugaresVazios) != 0:
             # Alocando valores na memória
             for i in range(tamanho):
-                memoria[lugares[i]] = letra
+                memoria[lugaresVazios[i]] = letra
         # Limpando dados das variavéis
-        tamanhoBuracoAntigo = 0
-        lugares = [] * 0
+        qtndEspacoVazioAntigo = 0
+        lugaresVazios = [] * 0
 
     # Verifica se os dados foram alocados na memória e atribui uma mensagem à variavél mensagem
-    if memoriaAntiga == memoria:
+    if cloneMemoria == memoria:
         mensagem = "\n Information of the memory: Impossible allocate \n"
     else:
         mensagem = "\n Information of the memory: Allocated with success! \n"
