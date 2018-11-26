@@ -127,17 +127,8 @@ while(opcao != 4):
     print("Digite a letra a ser utiliada")
     letra = input()
 
-    if(opcao == 1):
-        # Chama a função inserirLocacao, passado o valor da variável de memoria, opcao, tamanho, letra como parametro para função
-        resultado = inserirLocacao(memoria, opcao, tamanho, letra)
-
-    if (opcao == 2):
-        # Chama a função inserirLocacao, passado o valor da variável de memoria, opcao, tamanho, letra como parametro para função
-        resultado = inserirLocacao(memoria, opcao, tamanho, letra)
-
-    if(opcao == 3):
-        # Chama a função inserirLocacao, passado o valor da variável de memoria, opcao, tamanho, letra como parametro para função
-        resultado = inserirLocacao(memoria, opcao, tamanho, letra)
+    # Chama a função inserirLocacao, passado o valor da variável de memoria, opcao, tamanho, letra como parametro para função
+    resultado = inserirLocacao(memoria, opcao, tamanho, letra)
 
     # Informa ser foi ou não alocado na memória
     print(resultado)
